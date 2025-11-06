@@ -1,0 +1,299 @@
+/* ---------- Basic Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- Body ---------- */
+body {
+  background: #f7f9fb;
+  color: #333;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ---------- Header (centered vertically) ---------- */
+header {
+  background: linear-gradient(135deg, #1a73e8, #3a6073);
+  color: #fff;
+  text-align: center;
+  padding: 36px 20px;
+  border-bottom: 4px solid #00eaff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ensures children are centered horizontally */
+  gap: 8px;
+}
+
+/* Title & tagline */
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+header .tagline {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* ---------- Navigation (keeps nav centered & wraps nicely on small screens) ---------- */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap; /* allows wrapping on narrow screens */
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 7px 14px;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 0.95rem;
+}
+
+nav a:hover,
+nav a.active {
+  background: #00eaff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* ---------- Resume Container: centered, constrained width ---------- */
+.resume-container {
+  width: 92%;
+  max-width: 1000px; /* slightly wider for pro look */
+  margin: 36px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(20, 30, 50, 0.08);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr; /* mobile-first single column */
+  gap: 28px;
+}
+
+/* ---------- Two-column layout on larger screens ---------- */
+@media (min-width: 900px) {
+  .resume-container {
+    grid-template-columns: 1fr 320px; /* main content + sidebar */
+    align-items: start;
+    padding: 36px;
+  }
+}
+
+/* ---------- Resume Sections (main column) ---------- */
+.resume-section {
+  /* When inside two-column grid, left column content stretches */
+  border-left: 4px solid #1a73e8;
+  padding-left: 18px;
+  padding-right: 8px;
+  margin-bottom: 0; /* spacing is controlled by grid gap */
+}
+
+/* Make heading and icon vertically centered */
+.resume-section h2 {
+  color: #1a73e8;
+  margin-bottom: 12px;
+  font-size: 1.18rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+}
+
+/* Space inside list items so text lines align with heading left border */
+.edu-item,
+.project-item {
+  margin-bottom: 12px;
+}
+
+/* ---------- Sidebar styles (contact/skills) ---------- */
+.sidebar {
+  background: #fbfdff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
+  border: 1px solid #eef6ff;
+}
+
+/* If sidebar is not used (small screens) sidebar rules won't break layout */
+@media (max-width: 899px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* ---------- Skills List (clean alignment) ---------- */
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px 12px;
+}
+
+.skills-list li {
+  background: #f2f8ff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #123;
+}
+
+/* ---------- Contact Info: icon column + text column ---------- */
+.contact-info {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* if using icon elements (i or svg), keep fixed width to align text */
+.contact-info li i,
+.contact-info li svg {
+  min-width: 26px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #1a73e8;
+}
+
+/* ---------- Small utilities ---------- */
+.tag {
+  display: inline-block;
+  background: #e8f6ff;
+  color: #0a6bdb;
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: #1a73e8;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9rem;
+  margin-top: 36px;
+  border-top: 3px solid #00eaff;
+}
+
+/* ---------- Print friendly adjustments ---------- */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  header,
+  footer {
+    display: none;
+  }
+  .resume-container {
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 12px;
+  }
+  .resume-section {
+    border-left: 3px solid #000;
+    padding-left: 12px;
+  }
+}
+/* ---------- Common Page Layout for Home & Bio-data ---------- */
+.page-container {
+  width: 92%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(20, 30, 50, 0.08);
+  padding: 32px;
+  flex: 1;
+}
+
+/* Fix footer to stay at bottom on short pages */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- Intro Section ---------- */
+.intro h2 {
+  color: #1a73e8;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+
+.intro .highlight {
+  color: #00aaff;
+  font-weight: 600;
+}
+
+.intro p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ---------- Bio-data Section ---------- */
+.bio-section h2 {
+  color: #1a73e8;
+  margin-bottom: 12px;
+  border-left: 4px solid #1a73e8;
+  padding-left: 10px;
+}
+
+.bio-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
+.bio-list li {
+  background: #f2f8ff;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .page-container {
+    padding: 20px;
+  }
+}
